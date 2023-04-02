@@ -9,18 +9,18 @@ const componentMap = {
   2: SecondPage,
 };
 const step = steps();
-const componente = shallowRef();
+const currentComponent = shallowRef();
 watch(
   () => step.currentStep,
   (currentStep) => {
     // return the component based on the current step
     if (currentStep === 1) {
-      componente.value = componentMap[currentStep];
+      currentComponent.value = componentMap[currentStep];
     } else if (currentStep === 2) {
-      componente.value = componentMap[currentStep];
+      currentComponent.value = componentMap[currentStep];
     }
     else{
-      componente.value = null;
+      currentComponent.value = null;
     }
   }
 );
@@ -28,7 +28,7 @@ watch(
 </script>
 
 <template>
-  <component :is="componente"></component>
+  <component :is="currentComponent"></component>
   {{step.currentStep}}
   <button @click="step.incrementStep">Add 1</button>
   <div v-if="step.currentStep === 5">Ohh hell nah</div>
