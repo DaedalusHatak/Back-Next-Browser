@@ -28,13 +28,37 @@ watch(
 </script>
 
 <template>
-  <component :is="currentComponent"></component>
+ 
+<div class="main">  <div class="counter">
   {{step.currentStep}}
   <button @click="step.incrementStep">Add 1</button>
-  <div v-if="step.currentStep === 5">Ohh hell nah</div>
+</div>
 
+  <component class="component" :is="currentComponent"></component></div>
 </template>
 
 <style>
-
+.counter{
+  display: inline-block;
+}
+.main{
+  min-height: 100svh;
+ 
+  font-size: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+gap:5rem;
+  justify-content: center;
+}
+button{
+  padding: 0.5rem 1rem;
+  font-size: 20px;
+  color:slateblue;
+}
+.component{
+  margin-top: 200px;
+position: absolute;
+}
 </style>
